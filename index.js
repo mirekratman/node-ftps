@@ -258,8 +258,15 @@ FTP.prototype.mirror = function (opts) {
   if (opts.options) {
     raw += ' ' + opts.options
   }
-  if (opts.filter) {
-    raw += ' -i "' + String(opts.filter).slice(1, -1) + '"'
+  if (opts.include) {
+    include.forEach(function(item){
+        raw += ' -i "' + String(item).slice(1, -1) + '"'
+    });
+  }
+  if (opts.exclude) {
+    exclude.forEach(function(item) {
+        raw += ' -x "' + String(item).slice(1, -1) + '"'
+    });
   }
   if (opts.upload === true) {
     raw += ' ' + this._escapeshell(opts.localDir) + ' ' + this._escapeshell(opts.remoteDir)
