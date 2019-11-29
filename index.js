@@ -259,12 +259,12 @@ FTP.prototype.mirror = function (opts) {
     raw += ' ' + opts.options
   }
   if (opts.include) {
-    include.forEach(function(item){
+    opts.include.forEach(function(item){
         raw += ' -i "' + String(item).slice(1, -1) + '"'
     });
   }
   if (opts.exclude) {
-    exclude.forEach(function(item) {
+    opts.exclude.forEach(function(item) {
         raw += ' -x "' + String(item).slice(1, -1) + '"'
     });
   }
